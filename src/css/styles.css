@@ -13,7 +13,65 @@ body {
   padding: 2rem;
   color: #fff;
 }
+h4{
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  align-items: center; ;
+}
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  
 
+  
+}
+.p-3{
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mb-3 {
+  display: flex ;
+  flex-direction: column;
+  
+}
+#date_cite {
+ max-width: 200px;
+  gap: 0.5rem;
+  border: 90px;
+}
+
+#time_cite{
+  max-width: 200px;
+  gap: 0.5rem;
+  border: 90px;
+}
+#description{
+  max-width: 200px;
+  gap: 0.5rem;
+  border: 90px;
+}
+#phone_person{
+  max-width: 200px;
+  gap: 0.5rem;
+    border: 90px;
+}
+
+#name_person{
+  max-width: 200px;
+  gap: 0.5rem;
+    border: 90px;
+}
+#name_pet{
+  max-width: 200px;
+  gap: 0.5rem;
+  border: 90px;
+}
 /* ========== CONTENEDOR PRINCIPAL ========== */
 .main-wrapper {
   background: rgba(255, 255, 255, 0.05);
@@ -40,6 +98,17 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+.title img {
+  width: 200px;
+  
+  height: 100%; 
+  display: flex;
+justify-content: center;  
+  align-items: center;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+   box-shadow: 0 8px 16px rgba(0, 179, 227, 0.4);
 }
 
 /* ========== TARJETA DE PRÓXIMA CITA ========== */

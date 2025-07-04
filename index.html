@@ -20,8 +20,10 @@
 </head>
 
 <body>
-  <header class="bg-primary text-white text-center py-3">
-    <h1 class="title">Administrador de Pacientes</h1>
+  <header >
+    <h1 class="title"><img  alt="icono"
+          src="./src/icono/gestor-de-citas.png" />
+   </h1>
   </header>
 
   <main class="container row bg-white rounded py-4 mx-auto">
@@ -30,42 +32,43 @@
       <div class="p-3">
         <h4>Datos del paciente</h4>
 
-        <form id="form" class="row g-3 needs-validation p-2" novalidate autocomplete="off">
-          <div class="mb-3">
-            <label for="name_pet" class="form-label">Nombre de la mascota</label>
+        <form id="form" class="row-g-3-needs-validation-p-2" novalidate autocomplete="off">
+          <article class="mb-3">
+            <label for="name_pet" class="form-label">Nombre del paciente</label>
             <input type="text" class="form-control" id="name_pet" placeholder="Escribe el nombre de tu mascota" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
-          </div>
+          </article>
 
-          <div class="mb-3">
-            <label for="name_person" class="form-label">Nombre del propietario</label>
+          <article class="mb-3">
+            <label for="name_person" class="form-label">Nombre del acudiente</label>
             <input type="text" class="form-control" id="name_person" placeholder="Escribe tu nombre" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
-          </div>
+          </article>
+          
 
-          <div class="mb-3">
+          <article class="mb-3">
             <label for="phone_person" class="form-label">Teléfono del propietario</label>
-            <input type="tel" class="form-control" id="phone_person" placeholder="Escribe tu número telefónico" maxlength="10" required />
+            <input type="number" class="form-control" id="phone_person" placeholder="Escribe tu número telefónico" maxlength="10" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
-          </div>
+          </article>
 
-          <div class="mb-3">
+          <articule  class="mb-3">
             <label for="date_cite" class="form-label">Fecha de la cita</label>
             <input type="date" class="form-control" id="date_cite" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
-          </div>
+          </article>
 
-          <div class="mb-3">
+          <article class="mb-3">
             <label for="time_cite" class="form-label">Hora de la cita</label>
             <input type="time" class="form-control" id="time_cite" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
-          </div>
+          </article>
 
-          <div class="mb-3">
+          <article class="mb-3">
             <label for="description" class="form-label">Síntomas</label>
             <textarea class="form-control" id="description" rows="3" placeholder="Describe los síntomas" required></textarea>
             <div class="invalid-feedback">Este campo es obligatorio</div>
-          </div>
+          </article>
 
           <button class="btn btn-success w-100" type="submit" id="btnSave">Guardar</button>
         </form>
