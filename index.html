@@ -2,12 +2,15 @@
 <html lang="es">
 
 <head>
+  <!-- Character encoding and responsive design -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO and metadata -->
   <meta name="description" content="Administrador de pacientes con JSON Server, Fetch API y Bootstrap. Ideal para practicar consumo de API REST." />
   <meta name="keywords" content="gestión de pacientes, json-server, fetch, rest api, bootstrap, frontend, Riwi" />
   <meta name="sitedomain" content="https://github.com/RafaeRamirez/gestion_api.git" />
-  <meta name="organization" content="Riwi" />
+  <meta name="organization" content="RafaeRamirez" />
   <meta name="author" content="Rafael Augusto Ramírez Bolaño" />
   <meta name="designer" content="Rafael Augusto Ramírez Bolaño" />
   <meta name="copyright" content="© 2025 Rafael Augusto Ramírez Bolaño. Todos los derechos reservados." />
@@ -15,86 +18,101 @@
   <meta name="robots" content="index,follow" />
   <meta name="googlebot" content="index,follow" />
   <meta name="revisit-after" content="15days" />
+
+  <!-- External CSS -->
   <link rel="stylesheet" href="./src/css/styles.css" />
+
+  <!-- Title of the web page -->
   <title>Administrador de Pacientes</title>
 </head>
 
 <body>
-  <header >
-    <h1 class="title"><img  alt="icono"
-          src="./src/icono/gestor-de-citas.png" />
-   </h1>
+  <!-- Header with logo/title -->
+  <header>
+    <h1 class="title">
+      <img src="./src/icono/gestor-de-citas.png" alt="icono" />
+    </h1>
   </header>
 
+  <!-- Main content container -->
   <main class="container row bg-white rounded py-4 mx-auto">
-    <!-- Formulario -->
+
+    <!-- Form section -->
     <section class="col-12 col-md-6">
       <div class="p-3">
         <h4>Datos del paciente</h4>
 
+        <!-- Patient appointment form -->
         <form id="form" class="row-g-3-needs-validation-p-2" novalidate autocomplete="off">
+          
+          <!-- Pet name input -->
           <article class="mb-3">
             <label for="name_pet" class="form-label">Nombre del paciente</label>
             <input type="text" class="form-control" id="name_pet" placeholder="Escribe el nombre de tu mascota" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </article>
 
+          <!-- Owner name input -->
           <article class="mb-3">
             <label for="name_person" class="form-label">Nombre del acudiente</label>
             <input type="text" class="form-control" id="name_person" placeholder="Escribe tu nombre" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </article>
-          
 
+          <!-- Owner phone input -->
           <article class="mb-3">
             <label for="phone_person" class="form-label">Teléfono del propietario</label>
             <input type="number" class="form-control" id="phone_person" placeholder="Escribe tu número telefónico" maxlength="10" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </article>
 
-          <articule  class="mb-3">
+          <!-- Appointment date input -->
+          <article class="mb-3">
             <label for="date_cite" class="form-label">Fecha de la cita</label>
             <input type="date" class="form-control" id="date_cite" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </article>
 
+          <!-- Appointment time input -->
           <article class="mb-3">
             <label for="time_cite" class="form-label">Hora de la cita</label>
             <input type="time" class="form-control" id="time_cite" required />
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </article>
 
+          <!-- Symptom description -->
           <article class="mb-3">
             <label for="description" class="form-label">Síntomas</label>
             <textarea class="form-control" id="description" rows="3" placeholder="Describe los síntomas" required></textarea>
             <div class="invalid-feedback">Este campo es obligatorio</div>
           </article>
 
+          <!-- Submit button -->
           <button class="btn btn-success w-100" type="submit" id="btnSave">Guardar</button>
         </form>
       </div>
     </section>
 
-    <!-- Sección de Citas -->
+    <!-- Appointments list section -->
     <section class="col-12 col-md-6 p-3">
       <h4>Administrar Citas</h4>
       <div class="container-cites d-flex flex-wrap gap-3" id="appointments-container">
-        <!-- Aquí se insertan las citas dinámicamente -->
+        <!-- Appointments will be inserted here dynamically -->
       </div>
     </section>
   </main>
 
+  <!-- Main JS module -->
   <script type="module" src="./src/js/gestion_api.js"></script>
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 Gestion de citas . Todos los derechos reservados.</p>
-      <address>
-        Email:
-        <a href="mailto:soportescitas@GESTIO_CITA.com"
-          >soportescitas@GESTIO_CITA.com</a
-        >
-      </address>
-    </footer>
+
+  <!-- Footer with contact info -->
+  <footer>
+    <p>&copy; 2025 Gestión de Citas. Todos los derechos reservados.</p>
+    <address>
+      Email:
+      <a href="mailto:soportescitas@GESTIO_CITA.com">soportescitas@GESTIO_CITA.com</a>
+    </address>
+  </footer>
 </body>
 
 </html>

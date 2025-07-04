@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* === GLOBAL STYLES === */
 * {
   margin: 0;
   padding: 0;
@@ -9,75 +10,54 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(120deg, #147aa5, #203a43, #2c5364); /* Dark gradient background */
   padding: 2rem;
   color: #fff;
 }
-h4{
+
+h4 {
   color: #fff;
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  align-items: center; ;
+  align-items: center;
 }
+
+/* === FORM STYLES === */
 form {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 1.5rem;
-  
-
-  
 }
-.p-3{
+
+/* Padded container */
+.p-3 {
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
   border-radius: 0.75rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Group input vertically */
 .mb-3 {
-  display: flex ;
+  display: flex;
   flex-direction: column;
-  
-}
-#date_cite {
- max-width: 200px;
-  gap: 0.5rem;
-  border: 90px;
 }
 
-#time_cite{
+/* === INPUT STYLES === */
+/* Limit width and spacing for each input field */
+#date_cite, #time_cite, #description, #phone_person, #name_person, #name_pet {
   max-width: 200px;
   gap: 0.5rem;
-  border: 90px;
-}
-#description{
-  max-width: 200px;
-  gap: 0.5rem;
-  border: 90px;
-}
-#phone_person{
-  max-width: 200px;
-  gap: 0.5rem;
-    border: 90px;
+  border: 90px; /* ⚠️ This value is incorrect — "border" should define style, not just width */
 }
 
-#name_person{
-  max-width: 200px;
-  gap: 0.5rem;
-    border: 90px;
-}
-#name_pet{
-  max-width: 200px;
-  gap: 0.5rem;
-  border: 90px;
-}
-/* ========== CONTENEDOR PRINCIPAL ========== */
+/* === MAIN CONTAINER === */
 .main-wrapper {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05); /* Transparent card background */
   border-radius: 1.5rem;
   padding: 2rem;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
   max-width: 700px;
   width: 100%;
@@ -86,7 +66,7 @@ form {
   gap: 2rem;
 }
 
-/* ========== CABECERA ========== */
+/* === HEADER === */
 .header {
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -99,19 +79,20 @@ form {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+/* Center and style the logo/image inside the title */
 .title img {
   width: 200px;
-  
-  height: 100%; 
+  height: 100%;
   display: flex;
-justify-content: center;  
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
   transition: transform 0.3s ease;
-   box-shadow: 0 8px 16px rgba(0, 179, 227, 0.4);
+  box-shadow: 0 8px 16px rgba(0, 179, 227, 0.4);
 }
 
-/* ========== TARJETA DE PRÓXIMA CITA ========== */
+/* === UPCOMING APPOINTMENT CARD === */
 .card {
   background: rgba(255, 255, 255, 0.08);
   padding: 1.5rem;
@@ -134,13 +115,13 @@ justify-content: center;
   margin-bottom: 0.8rem;
 }
 
-/* ========== CONTENEDOR DE CITAS ========== */
+/* === APPOINTMENT LIST CONTAINER === */
 .container-cites {
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(120deg, #147aa5, #203a43, #2c5364); /* Dark gradient background */
   padding: 1.5rem;
   border-radius: 1rem;
   max-height: 280px;
-  overflow-y: auto;
+  overflow-y: auto; /* Scroll if content is too long */
   box-shadow: inset 0 1px 5px rgba(255, 255, 255, 0.1);
 }
 
@@ -159,9 +140,9 @@ justify-content: center;
   font-size: 1rem;
 }
 
-/* Estilo de cada cita dentro de la lista */
+/* === INDIVIDUAL APPOINTMENT ITEMS === */
 .cites-list li {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(37, 3, 3, 0.705);
   padding: 1rem;
   border-radius: 0.75rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -184,7 +165,7 @@ justify-content: center;
   color: #ccc;
 }
 
-/* ========== ESTILO DE BOTONES ========== */
+/* === BUTTON STYLES === */
 button {
   background-color: #0af;
   color: white;
@@ -215,7 +196,7 @@ button:focus {
   outline-offset: 2px;
 }
 
-/* Botones secundarios */
+/* Secondary (outlined) button style */
 button.secondary {
   background-color: transparent;
   border: 2px solid #0af;
@@ -227,7 +208,7 @@ button.secondary:hover {
   color: white;
 }
 
-/* ========== SCROLLBAR PERSONALIZADO ========== */
+/* === CUSTOM SCROLLBAR === */
 .container-cites::-webkit-scrollbar {
   width: 8px;
 }
@@ -237,7 +218,7 @@ button.secondary:hover {
   border-radius: 5px;
 }
 
-/* ========== RESPONSIVE DESIGN ========== */
+/* === RESPONSIVE DESIGN === */
 
 /* Tablets */
 @media (max-width: 900px) {
@@ -270,7 +251,7 @@ button.secondary:hover {
   }
 }
 
-/* Móviles */
+/* Smartphones */
 @media (max-width: 480px) {
   body {
     padding: 1rem;

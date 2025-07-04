@@ -1,6 +1,10 @@
+// Import custom alert functions
 import { alertError, alertSuccess } from "./alerts";
+
+// API URL for appointments
 const endpointAppointments = "http://localhost:3000/appointments";
 
+// Form elements
 const $namePet = document.getElementById("name_pet");
 const $namePerson = document.getElementById("name_person");
 const $namePhone = document.getElementById("phone_person");
@@ -10,10 +14,11 @@ const $description = document.getElementById("description");
 const $form = document.getElementById("form");
 const $appointmentsContainer = document.getElementById("appointments-container");
 
+// Variable to store the ID of the appointment being edited
 let editingId = null;
 
-// Obtener datos del formulario
-function getFormData() {
+// === Get form data and return it as an object ===
+function obtenerDatosFormulario() {
   return {
     namePet: $namePet.value.trim(),
     nameOwner: $namePerson.value.trim(),
@@ -24,8 +29,8 @@ function getFormData() {
   };
 }
 
-// Validar formulario
-function validateForm(data) {
+// === Validate that all fields are filled ===
+function validarFormulario(data) {
   return (
     data.namePet &&
     data.nameOwner &&
@@ -36,34 +41,34 @@ function validateForm(data) {
   );
 }
 
-// Cargar citas desde API
-async function loadAppointments() {
-  $appointmentsContainer.innerHTML = "<p>Cargando citas...</p>";
+// === Load appointments from the API and display them ===
+async function cargarCitas() {
+  $appointmentsContainer.innerHTML = "<p>Loading appointments...</p>";
   try {
     const response = await fetch(endpointAppointments);
     const data = await response.json();
     $appointmentsContainer.innerHTML = "";
-    data.forEach(addAppointmentToDOM);
+    data.forEach(agregarCitaAlDOM);
   } catch (error) {
     console.error("Error al cargar citas:", error);
-    alertError("Hubo un error al cargar las citas.");
+    alertError("Se produjo un error al cargar las citas.");
   }
 }
 
-// Añadir cita al DOM
-function addAppointmentToDOM(appointment) {
+// === Create and display appointment in the DOM ===
+function agregarCitaAlDOM(cita) {
   const article = document.createElement("article");
   article.classList.add("card", "card_cite");
-  article.setAttribute("data-id", appointment.id);
+  article.setAttribute("data-id", cita.id);
 
   article.innerHTML = `
     <div class="card-body">
-      <h5 class="card-title fs-3 fw-bold">${appointment.namePet}</h5>
-      <div class="d-flex gap-2"><span class="fw-bold">Propietario:</span><span>${appointment.nameOwner}</span></div>
-      <div class="d-flex gap-2"><span class="fw-bold">Teléfono:</span><span>${appointment.phone}</span></div>
-      <div class="d-flex gap-2"><span class="fw-bold">Fecha:</span><span>${appointment.date}</span></div>
-      <div class="d-flex gap-2"><span class="fw-bold">Hora:</span><span>${appointment.time}</span></div>
-      <div class="d-flex gap-2"><span class="fw-bold">Síntomas:</span><span>${appointment.description}</span></div>
+      <h5 class="card-title fs-3 fw-bold""fw-bold">Nombre del Paciente:</span><span>${cita.namePet}</h5>
+      <div class="d-flex gap-2"><span class="fw-bold">Nombre del acudiente:</span><span>${cita.nameOwner}</span></div>
+      <div class="d-flex gap-2"><span class="fw-bold">Telefono:</span><span>${cita.phone}</span></div>
+      <div class="d-flex gap-2"><span class="fw-bold">Fecha:</span><span>${cita.date}</span></div>
+      <div class="d-flex gap-2"><span class="fw-bold">Hora:</span><span>${cita.time}</span></div>
+      <div class="d-flex gap-2"><span class="fw-bold">Síntomas:</span><span>${cita.description}</span></div>
       <div class="d-flex mt-3 gap-2">
         <button class="btn btn-primary edit">Editar</button>
         <button class="btn btn-danger delete">Eliminar</button>
@@ -73,21 +78,23 @@ function addAppointmentToDOM(appointment) {
 
   $appointmentsContainer.appendChild(article);
 
+  // Delete button
   const btnDelete = article.querySelector(".delete");
   btnDelete.addEventListener("click", () => {
-    if (confirm("¿Estás seguro de eliminar esta cita?")) {
-      deleteAppointment(appointment.id, article);
+    if (confirm("¿Está seguro de que desea eliminar esta cita?")) {
+      eliminarCita(cita.id, article);
     }
   });
 
+  // Edit button
   const btnEdit = article.querySelector(".edit");
   btnEdit.addEventListener("click", () => {
-    editAppointment(appointment);
+    editarCita(cita);
   });
 }
 
-// Eliminar cita
-async function deleteAppointment(id, article) {
+// === Delete appointment from the API and the DOM ===
+async function eliminarCita(id, article) {
   try {
     const response = await fetch(`${endpointAppointments}/${id}`, {
       method: "DELETE",
@@ -101,24 +108,24 @@ async function deleteAppointment(id, article) {
     }
   } catch (error) {
     console.error("Error al eliminar cita:", error);
-    alertError("Hubo un error al eliminar la cita.");
+    alertError("Se produjo un error al eliminar la cita.");
   }
 }
 
-// Cargar datos en formulario para editar
-function editAppointment(appointment) {
-  $namePet.value = appointment.namePet;
-  $namePerson.value = appointment.nameOwner;
-  $namePhone.value = appointment.phone;
-  $nameDate.value = appointment.date;
-  $nameTime.value = appointment.time;
-  $description.value = appointment.description;
-  editingId = appointment.id;
+// === Load appointment data into the form for editing ===
+function editarCita(cita) {
+  $namePet.value = cita.namePet;
+  $namePerson.value = cita.nameOwner;
+  $namePhone.value = cita.phone;
+  $nameDate.value = cita.date;
+  $nameTime.value = cita.time;
+  $description.value = cita.description;
+  editingId = cita.id;
   $namePet.focus();
 }
 
-// Crear nueva cita
-async function createAppointment(data) {
+// === Create new appointment and send it to the API ===
+async function crearCita(data) {
   try {
     const response = await fetch(endpointAppointments, {
       method: "POST",
@@ -126,24 +133,24 @@ async function createAppointment(data) {
       body: JSON.stringify(data),
     });
 
-    const result = await response.json();
+    const resultado = await response.json();
 
     if (response.ok) {
       alertSuccess("Cita creada exitosamente.");
       $form.reset();
       $namePet.focus();
-      addAppointmentToDOM(result);
+      agregarCitaAlDOM(resultado);
     } else {
-      throw new Error("No se pudo crear la cita.");
+      throw new Error("Error al crear la cita.");
     }
   } catch (error) {
     console.error("Error al crear cita:", error);
-    alertError("Hubo un error al crear la cita.");
+    alertError("Se produjo un error al crear la cita.");
   }
 }
 
-// Actualizar cita existente
-async function updateAppointment(data) {
+// === Update an existing appointment in the API ===
+async function actualizarCita(data) {
   try {
     const response = await fetch(`${endpointAppointments}/${editingId}`, {
       method: "PUT",
@@ -156,32 +163,32 @@ async function updateAppointment(data) {
       $form.reset();
       editingId = null;
       $namePet.focus();
-      loadAppointments();
+      cargarCitas();
     } else {
       throw new Error("No se pudo actualizar la cita.");
     }
   } catch (error) {
-    console.error("Error al actualizar cita:", error);
-    alertError("Hubo un error al actualizar la cita.");
+    console.error("Error al actualizar la cita:", error);
+    alertError("Se produjo un error al actualizar la cita.");
   }
 }
 
-// Manejador del formulario
+// === Event when submitting the form ===
 $form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const formData = getFormData();
+  const formData = obtenerDatosFormulario();
 
-  if (!validateForm(formData)) {
+  if (!validarFormulario(formData)) {
     alertError("Todos los campos son obligatorios.");
     return;
   }
 
   if (editingId) {
-    updateAppointment(formData);
+    actualizarCita(formData);
   } else {
-    createAppointment(formData);
+    crearCita(formData);
   }
 });
 
-// Cargar citas al iniciar
-loadAppointments();
+// === Load appointments on page load ===
+cargarCitas();
